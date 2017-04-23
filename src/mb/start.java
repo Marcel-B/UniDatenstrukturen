@@ -27,5 +27,15 @@ public class start {
 				return (((Int)le).value) == 22;
 			}
 		});	
+		
+		Pos newPosition = myList.front();
+		
+		tmpValue = new Int();
+		tmpValue.value = 5;
+		myList.insert(newPosition, tmpValue);
+		
+		myList.delete(p);
+		
+		System.out.println("End Program");
 	}
 }

@@ -61,7 +61,11 @@ public class List extends Pos {
 			return null;
 		return p.pred;
 	}
-	
+	public List delete(Pos p){
+		p.pred.succ = p.succ;
+		p.pred = p.succ.pred;		
+		return this;
+	}
 	public boolean eol(Pos p){
 		return p.succ == null;
 	}
