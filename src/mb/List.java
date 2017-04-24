@@ -51,24 +51,35 @@ public class List extends Pos {
 		}
 		return null;
 	}
-	public Pos next(Pos p){
-		if(eol(p.succ))
-			return null;
+	
+	public Pos next(Pos p){	
+	//	if(eol(p.succ))
+		//	return null;
 		return p.succ;
 	}
+	
 	public Pos pervious(Pos p){
 		if(bol(p.pred))
 			return null;
 		return p.pred;
 	}
+	
 	public List delete(Pos p){
-		p.pred.succ = p.succ;
+		if(p.succ == null){// Das letzte Element
+			p.pred.succ = null;
+			this.pred = p.pred;
+			return this;
+			}
+
+			p.pred.succ = p.succ;
 		p.pred = p.succ.pred;		
 		return this;
 	}
+	
 	public boolean eol(Pos p){
-		return p.succ == null;
+		return (p.succ == null);
 	}
+	
 	public boolean bol(Pos p){
 		return p == this;
 	}
@@ -79,5 +90,17 @@ public class List extends Pos {
 	
 	public void reset(){
 		// TODO - Liste löschen
+	}
+	
+	public void print(){
+		if(succ == null)
+			return;
+		Pos now = succ;
+		int cnt = 0;
+		while(now != null){
+			String value = now.value.toString();
+			System.out.println("["+cnt++ +"]= " + value);
+			now = now.succ;
+		}
 	}
 }
