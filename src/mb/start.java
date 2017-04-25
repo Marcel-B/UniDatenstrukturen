@@ -7,8 +7,21 @@ public class start {
 	public static void main(String[] args) {
 		Scanner reader = new Scanner(System.in);
 
-		List myList = new List();
+		System.out.print("Welche Collection Testen? [0] = List, [1] = Stack" );
+		int ch = reader.nextInt();
+		switch(ch){
+		case 0:
+			System.out.println("List");
+			break;
+		case 1:
+			System.out.println("Stack");
+			break;
+			
+		}
 		
+		List myList = new List();
+		Stack stack = new Stack(20);
+		Queue queue = new Queue(5);
 		int n;
 		do{
 			n = nextInput(reader);		
@@ -18,6 +31,10 @@ public class start {
 			Int tmpValue = new Int();
 			tmpValue.value = n;	
 			myList = myList.insert(currentPosition, tmpValue);
+			stack.Push(tmpValue);
+			stack.Print();
+			queue.enqueue(tmpValue);
+			queue.print();
 			myList.print();
 		}while(true);
 		System.out.println("Sie haben folgende Liste eingegeben:\n");
